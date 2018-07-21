@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/21 14:14:50 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/21 16:02:57 by ypikul           ###   ########.fr       */
+/*   Created: 2018/07/21 15:40:06 by ypikul            #+#    #+#             */
+/*   Updated: 2018/07/21 15:47:38 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "2048.h"
+#include "../libft/ft_printf.h"
+#include <ncurses.h>
 
-int		main(void)
+void	ft_error(const char *message, int exit_code)
 {
-	t_data	game;
-
-	ft_bzero(&game, sizeof(game));
-	initialize(&game);
-	while (42)
-	{
-		update(&game);
-	}
-	return (0);
+	endwin();
+	ft_printf("%s\n", message);
+	exit(exit_code);
 }
