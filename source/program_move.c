@@ -42,9 +42,20 @@ int		try_add_digit_to_game(t_game_data *game)
 
 int		check_possible_moves(t_game_data *game)
 {
+	int		possible_move;
+
+	possible_move = 0;
 	game->checking_mode = TRUE;
-	handle_player_move(game);
-	if (game->player_moved == FALSE)
+	handle_player_move(game, KEY_LEFT);
+	possible_move += game->player_moved;
+	handle_player_move(game, KEY_RIGHT);
+	possible_move += game->player_moved;
+	handle_player_move(game, KEY_UP);
+	possible_move += game->player_moved;
+	handle_player_move(game, KEY_DOWN);
+	possible_move += game->player_moved;
+	game->checking_mode = FALSE;
+	if (possible_move == 0)
 		return (FALSE);
 	else
 		return (TRUE);

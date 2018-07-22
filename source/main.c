@@ -18,17 +18,15 @@ void	print_game(t_game_data *game);
 int		main(void)
 {
 	t_game_data		game;
-	int				game_on;
 
-	game_on = TRUE;
 	check_win_value();
 	init_game(&game);
 	generate_first_program_move(&game);
 	//print_game(&game);
 	while (TRUE)
 	{
-		clear();
-		print_game(&game);
+		clear();//TODO delete
+		print_game(&game);//TODO delete
 		if (player_make_move(&game) == FALSE)
 			break ;
 		if (program_make_move(&game) == FALSE)
@@ -50,7 +48,7 @@ void	print_game(t_game_data *game)
 		idx.x = 0;
 		while (idx.x < game->array_size)
 		{
-			mvprintw(idx.y * 3, idx.x * 3, "%d", game->game_array[idx.y][idx.x]);
+			mvprintw(idx.y * 4, idx.x * 4, "%d", game->game_array[idx.y][idx.x]);
 			idx.x++;
 		}
 		printw("\n");

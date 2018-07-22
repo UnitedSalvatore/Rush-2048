@@ -12,18 +12,27 @@
 
 #include "game_2048.h"
 
-void	handle_line(t_game_data *game)
+void	handle_line(t_game_data *game)//changed
 {
 	move_numbers_left(game);
 	if (is_same(game->line, 0, 1))
-		is_same(game->line, 2, 3);
+	{
+		game->score += game->line[0];
+		if (is_same(game->line, 2, 3))
+			game->score += game->line[2];
+	}
 	else
 	{
-		if (!is_same(game->line, 1, 2))
-			is_same(game->line, 2, 3);
+		if (is_same(game->line, 1, 2))
+			game->score += game->line[1];
+		else
+		{
+			if (is_same(game->line, 2, 3))
+				game->score += game->line[2];
+		}
 	}
 	move_numbers_left(game);
-	game->num_of_free_cell += count_num_of_free_cell(game->line, game->array_size);
+	game->num_of_free_cell += count_free_cells(game->line, game->array_size);
 }
 
 void	move_numbers_left(t_game_data *game)
@@ -60,7 +69,7 @@ int		is_same(int *line, int idx_1, int idx_2)
 		return (FALSE);
 }
 
-int		count_num_of_free_cell(int *line, int line_size)
+int		count_free_cells(int *line, int line_size)
 {
 	int idx;
 	int num_of_free_cell;
