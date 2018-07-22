@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 18:36:59 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:39:23 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 23:00:24 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void		update_finish(t_data *game)
 	mvwhline(game->main_win, MAX_Y + 1, 0, '#', game->win_max_x);
 	mvwvline(game->main_win, 0, 0, '#', game->win_max_y);
 	mvwvline(game->main_win, 0, MAX_X, '#', game->win_max_y);
+	wrefresh(game->main_win);
 }
 
 void		finish_screen(t_data *game)
@@ -54,12 +55,9 @@ void		finish_screen(t_data *game)
 	win_y = game->win_y;
 	win_x = game->win_x;
 	getmaxyx(game->main_win, game->win_y, game->win_x);
-	if (win_y != game->win_y || win_x != game->win_x)
-	{
-		update_resolution(game);
-		update_finish(game);
-	}
-	else if (game->ch == ESC)
+	update_resolution(game);
+	update_finish(game);
+	if (game->ch == ESC)
 	{
 		endwin();
 		exit(0);

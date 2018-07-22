@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:42:00 by dadavyde          #+#    #+#             */
-/*   Updated: 2018/07/22 22:35:11 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:55:25 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,10 @@ static void	check_for_win_value(t_data *game)
 		{
 			if (idx.y > 0)
 			{
-				if (game->blocks[idx.y][idx.x] == WIN_VALUE)
+				if (game->blocks[idx.y][idx.x] == game->win_value)
 				{
 					game->win_value = NONE;
+					game->game_mode = WIN_MODE;
 					update_finish(game);
 					return ;
 				}

@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:38:15 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 23:01:22 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ struct			s_position
 typedef enum	e_const
 {
 	NONE = 0u,
-	WIN_VALUE = 8u
+	WIN_VALUE = 2048u
 }				t_const;
 
 struct			s_data

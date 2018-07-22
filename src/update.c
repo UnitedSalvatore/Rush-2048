@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 16:03:47 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:36:43 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:58:51 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void		update(t_data *game)
 		{
 			game->game_mode = LOSE_MODE;
 			update_lose(game);
+			return ;
 		}
 		update_resolution(game);
 		update_frame(game);
