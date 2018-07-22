@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 17:52:10 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 18:39:56 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum e_const	t_winv;
 
 typedef enum	e_const
 {
-	NONE = 0u;
+	NONE = 0u,
 	WIN_VALUE = 2048u
 }				t_const;
 
@@ -67,7 +67,7 @@ void			read_input(t_data *game);
 /*
 **	menu.c
 */
-void			menu(t_data *game);
+void			menu_screen(t_data *game);
 
 /*
 **	initialize.c

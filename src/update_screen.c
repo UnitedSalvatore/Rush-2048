@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 16:13:56 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 17:22:24 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 18:31:19 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,3 @@ void	update_frame(t_data *game)
 
 	attroff(COLOR_PAIR(1));
 }
-

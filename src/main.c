@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:50 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 16:46:01 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 18:40:09 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int		main(void)
 	{
 		read_input(&game);
 		if (game.game_mode == 0)
-			menu(&game);
+		{
+			menu_screen(&game);
+		}
 		else if (game.game_mode == 1)
 			update(&game);
 		if (game.ch == ESC)
