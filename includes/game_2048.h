@@ -18,12 +18,16 @@
 #include <time.h>
 #include "libft.h"
 
-# define WIN_VALUE 2048
-
 #define ESC 27
 
 enum	e_error {BAD_WIN_VALUE, TO_SMALL_WINDOW};
 enum	e_set {SET_TO_LINE, SET_TO_ARRAY};
+
+typedef enum	e_const
+{
+	NONE = 0u,
+	WIN_VALUE = 2048u
+}				t_const;
 
 typedef struct		s_game_data
 {
@@ -33,8 +37,22 @@ typedef struct		s_game_data
 	int				*line;
 	int				player_moved;
 	int				num_of_free_cell;
-	int				checking_mode;
 	int				score;//added
+
+	t_const			win_value;
+	unsigned		map_size;
+	unsigned		ch;
+	unsigned		game_mode;
+
+	unsigned		**blocks;
+	unsigned		block_x;
+	unsigned		block_y;
+
+	WINDOW			*main_win;
+	unsigned		win_x;
+	unsigned		win_y;
+	unsigned		win_max_x;
+	unsigned		win_max_y;
 }					t_game_data;
 
 typedef struct		s_position
@@ -43,7 +61,8 @@ typedef struct		s_position
 	int				y;
 }					t_position;
 
-int		check_win_value(void);
+int		check_win_value(t_game_data *game);
+void	check_for_win_value(t_game_data *game);
 
 void	init_game(t_game_data *game);
 void	choose_game_and_load(t_game_data *game);
@@ -54,7 +73,7 @@ void	set_digit(t_game_data *game, int digit_idx, int digit);
 
 int		player_make_move(t_game_data *game);
 void	player_press_key(t_game_data *game);
-int		handle_player_move(t_game_data *game, int keycode);
+int		handle_player_move(t_game_data *game);
 void	fill_line(t_game_data *game, int line_count, int set_type, int keycode);
 void	set_number(t_game_data *game, int *line_num, int *array_num, int set_type);
 

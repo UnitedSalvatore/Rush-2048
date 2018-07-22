@@ -19,7 +19,8 @@ int		main(void)
 {
 	t_game_data		game;
 
-	check_win_value();
+	game.win_value = WIN_VALUE;////////////
+	check_win_value(&game);
 	init_game(&game);
 	generate_first_program_move(&game);
 	//print_game(&game);

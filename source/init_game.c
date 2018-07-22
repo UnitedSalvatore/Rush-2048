@@ -26,7 +26,6 @@ void	init_game(t_game_data *game)
 		j++;
 	}
 	game->line = ft_memalloc(sizeof(int) * game->array_size);
-	game->checking_mode = FALSE;
 	game->num_of_free_cell = game->array_size * game->array_size;
 	initscr();//инициализация библиотеки
 	keypad(stdscr, TRUE);//режим обработки командных клавиш //int keypad(WINDOW *win, bool bf)

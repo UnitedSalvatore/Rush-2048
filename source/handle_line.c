@@ -12,7 +12,7 @@
 
 #include "game_2048.h"
 
-void	handle_line(t_game_data *game)//changed
+void	handle_line(t_game_data *game)
 {
 	move_numbers_left(game);
 	if (is_same(game->line, 0, 1))

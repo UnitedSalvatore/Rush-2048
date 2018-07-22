@@ -14,6 +14,8 @@
 
 int		program_make_move(t_game_data *game)
 {
+	if (game->win_value != NONE)
+		check_for_win_value(game);
 	if (try_add_digit_to_game(game) == TRUE)
 		return (TRUE);
 	else
@@ -42,57 +44,27 @@ int		try_add_digit_to_game(t_game_data *game)
 
 int		check_possible_moves(t_game_data *game)
 {
-	int		possible_move;
+	t_position	idx;
 
-	possible_move = 0;
-	game->checking_mode = TRUE;
-	handle_player_move(game, KEY_LEFT);
-	possible_move += game->player_moved;
-	handle_player_move(game, KEY_RIGHT);
-	possible_move += game->player_moved;
-	handle_player_move(game, KEY_UP);
-	possible_move += game->player_moved;
-	handle_player_move(game, KEY_DOWN);
-	possible_move += game->player_moved;
-	game->checking_mode = FALSE;
-	if (possible_move == 0)
-		return (FALSE);
-	else
-		return (TRUE);
+	idx.y = 0;
+	while (idx.y < game->array_size)
+	{
+		idx.x = 0;
+		while (idx.x < game->array_size)
+		{
+			if (idx.y > 0)
+			{
+				if (game->game_array[idx.y][idx.x] == game->game_array[idx.y - 1][idx.x])
+					return (TRUE);
+			}
+			if (idx.x < game->array_size - 1)
+			{
+				if (game->game_array[idx.y][idx.x] == game->game_array[idx.y][idx.x + 1])
+					return (TRUE);
+			}
+			idx.x++;
+		}
+		idx.y++;
+	}
+	return (FALSE);
 }
-
-
-
-
-
-/*void	fill_line(t_game_data *game, int line_count)//another version
-{
-	if (game->keycode == KEY_UP)
-	{
-		game->line[0] = game->game_array[0][line_count];
-		game->line[1] = game->game_array[1][line_count];
-		game->line[2] = game->game_array[2][line_count];
-		game->line[3] = game->game_array[3][line_count];
-	}
-	else if (game->keycode == KEY_DOWN)
-	{
-		game->line[0] = game->game_array[3][line_count];
-		game->line[1] = game->game_array[2][line_count];
-		game->line[2] = game->game_array[1][line_count];
-		game->line[3] = game->game_array[0][line_count];
-	}
-	else if (game->keycode == KEY_LEFT)
-	{
-		game->line[0] = game->game_array[line_count][0];
-		game->line[1] = game->game_array[line_count][1];
-		game->line[2] = game->game_array[line_count][2];
-		game->line[3] = game->game_array[line_count][3];
-	}
-	else
-	{
-		game->line[0] = game->game_array[line_count][3];
-		game->line[1] = game->game_array[line_count][2];
-		game->line[2] = game->game_array[line_count][1];
-		game->line[3] = game->game_array[line_count][0];
-	}
-}*/

@@ -15,7 +15,7 @@
 int		player_make_move(t_game_data *game)
 {
 	player_press_key(game);
-	if (handle_player_move(game, game->keycode) == TRUE)
+	if (handle_player_move(game) == TRUE)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -37,11 +37,11 @@ void	player_press_key(t_game_data *game)
 	game->keycode = key;
 }
 
-int		handle_player_move(t_game_data *game, int keycode)
+int		handle_player_move(t_game_data *game)
 {
 	int		line_count;
 
-	if (keycode == ESC)
+	if (game->keycode == ESC)
 		return (FALSE);
 	else
 	{
@@ -50,9 +50,9 @@ int		handle_player_move(t_game_data *game, int keycode)
 		game->num_of_free_cell = 0;
 		while (line_count < game->array_size)
 		{
-			fill_line(game, line_count, SET_TO_LINE, keycode);
+			fill_line(game, line_count, SET_TO_LINE, game->keycode);
 			handle_line(game);
-			fill_line(game, line_count, SET_TO_ARRAY, keycode);
+			fill_line(game, line_count, SET_TO_ARRAY, game->keycode);
 			line_count++;
 		}
 		return (TRUE);
@@ -83,7 +83,6 @@ void	fill_line(t_game_data *game, int line_count, int set_type, int keycode)
 	while (idx_line < game->array_size)
 	{
 		set_number(game, &(game->line[idx_line]), &(game->game_array[idx.y][idx.x]), set_type);
-		//game->line[idx_line] = game->game_array[idx.y][idx.x];
 		idx.y += iterator.y;
 		idx.x += iterator.x;
 		idx_line++;
@@ -97,41 +96,9 @@ void	set_number(t_game_data *game, int *line_num, int *array_num, int set_type)
 		if (set_type == SET_TO_ARRAY)
 		{
 			game->player_moved = TRUE;
-		}
-
-		if (game->checking_mode == TRUE)
-			return;
-		if (set_type == SET_TO_LINE)
-			*line_num = *array_num;
-		else if (set_type == SET_TO_ARRAY)
 			*array_num = *line_num;
-	}
-}
-
-
-/*
- *
-void	player_press_key(t_game_data *game)
-{
-	int		first_key;
-	int		second_key;
-
-	while (TRUE)
-	{
-		first_key = getch(); // ждём нажатия символа
-		if (first_key == KEY_DOWN || first_key == KEY_UP ||
-			first_key == KEY_LEFT || first_key == KEY_RIGHT)
-			break ;
-		if (first_key == ESC)
-		{
-			nodelay(stdscr, TRUE);
-			second_key = getch();
-			nodelay(stdscr, FALSE);
-			if (second_key == -1)
-				break ;
 		}
+		else if (set_type == SET_TO_LINE)
+			*line_num = *array_num;
 	}
-	game->keycode = first_key;
 }
- *
- */
