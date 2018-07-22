@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:42:00 by dadavyde          #+#    #+#             */
-/*   Updated: 2018/07/22 22:21:04 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:35:11 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	check_for_win_value(t_data *game)
 				if (game->blocks[idx.y][idx.x] == WIN_VALUE)
 				{
 					game->win_value = NONE;
+					update_finish(game);
 					return ;
 				}
 			}

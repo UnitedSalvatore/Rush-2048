@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:53:00 by dadavyde          #+#    #+#             */
-/*   Updated: 2018/07/22 19:45:25 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:43:17 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ static void	set_number(t_data *game, unsigned *line_num, \
 	}
 }
 
-static void	fill_line(t_data *game, int line_count, int set_type, int ch)
+static void	set_iterator_and_idx(unsigned *iterator, unsigned *idx,
+								unsigned line_count)
+{
+	*iterator = 0;
+	*idx = line_count;
+}
+
+static void	fill_line(t_data *game, unsigned line_count, int set_type, int ch)
 {
 	t_position	idx;
 	t_position	iterator;
@@ -37,23 +44,21 @@ static void	fill_line(t_data *game, int line_count, int set_type, int ch)
 	{
 		iterator.y = (ch == KEY_UP) ? 1 : -1;
 		idx.y = (ch == KEY_UP) ? 0 : game->map_size - 1;
-		iterator.x = 0;
-		idx.x = line_count;
+		set_iterator_and_idx(&(iterator.x), &(idx.x), line_count);
 	}
 	else
 	{
 		iterator.x = (ch == KEY_LEFT) ? 1 : -1;
 		idx.x = (ch == KEY_LEFT) ? 0 : game->map_size - 1;
-		iterator.y = 0;
-		idx.y = line_count;
+		set_iterator_and_idx(&(iterator.y), &(idx.y), line_count);
 	}
 	idx_line = 0;
 	while (idx_line < game->map_size)
 	{
-		set_number(game, &(game->line[idx_line]), &(game->blocks[idx.y][idx.x]), set_type);
+		set_number(game, &(game->line[idx_line++]),
+					&(game->blocks[idx.y][idx.x]), set_type);
 		idx.y += iterator.y;
 		idx.x += iterator.x;
-		idx_line++;
 	}
 }
 

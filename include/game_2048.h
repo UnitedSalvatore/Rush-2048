@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:21:41 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:38:15 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_data	t_data;
 typedef enum e_const	t_winv;
 typedef struct s_position	t_position;
 
-struct		s_position
+struct			s_position
 {
 	unsigned	x;
 	unsigned	y;
@@ -48,7 +48,7 @@ struct		s_position
 typedef enum	e_const
 {
 	NONE = 0u,
-	WIN_VALUE = 16u
+	WIN_VALUE = 8u
 }				t_const;
 
 struct			s_data
@@ -91,11 +91,13 @@ void			menu_screen(t_data *game);
 **	finish.c
 */
 void			finish_screen(t_data *game);
+void			update_finish(t_data *game);
 
 /*
 **	lose.c
 */
 void			lose_screen(t_data *game);
+void			update_lose(t_data *game);
 
 /*
 **	initialize.c

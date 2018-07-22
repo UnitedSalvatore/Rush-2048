@@ -6,13 +6,13 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 13:39:00 by dadavyde          #+#    #+#             */
-/*   Updated: 2018/07/22 19:53:46 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:25:59 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game_2048.h"
 
-void	handle_line(t_data *game)
+void			handle_line(t_data *game)
 {
 	move_numbers_left(game);
 	if (is_same(game->line, 0, 1))
@@ -35,7 +35,7 @@ void	handle_line(t_data *game)
 	game->num_of_free_cell += count_free_cells(game->line, game->map_size);
 }
 
-void	move_numbers_left(t_data *game)
+void			move_numbers_left(t_data *game)
 {
 	unsigned		get_idx;
 	unsigned		set_idx;
@@ -71,8 +71,8 @@ unsigned		is_same(unsigned *line, unsigned idx_1, unsigned idx_2)
 
 unsigned		count_free_cells(unsigned *line, unsigned line_size)
 {
-	int		 idx;
-	unsigned num_of_free_cell;
+	int			idx;
+	unsigned	num_of_free_cell;
 
 	num_of_free_cell = 0;
 	idx = line_size - 1;

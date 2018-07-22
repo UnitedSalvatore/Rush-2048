@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 16:03:47 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 21:41:59 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:36:43 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void		update(t_data *game)
 	{
 		player_make_move(game);
 		if (program_make_move(game) == FALSE)
+		{
 			game->game_mode = LOSE_MODE;
+			update_lose(game);
+		}
 		update_resolution(game);
 		update_frame(game);
 		update_blocks(game);

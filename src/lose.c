@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 22:07:20 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:16:48 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:39:27 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define X_START game->win_max_x / 2 - 25
 #define Y_START game->win_max_y / 10
 
-static void	update_lose(t_data *game)
+void		update_lose(t_data *game)
 {
 	werase(game->main_win);
 	attron(COLOR_PAIR(2));
@@ -34,9 +34,9 @@ static void	update_lose(t_data *game)
 		"%s", "YOU LOSE :(");
 	mvwprintw(game->main_win, game->win_max_y / 2 + 2, game->win_max_x / 2 \
 		- 5, "%s", "ESC : Exit");
-	mvwprintw(game->main_win, game->win_max_y - 3 , 3, \
+	mvwprintw(game->main_win, game->win_max_y - 3, 3, \
 		"%s", "|authors: dadavyde|");
-	mvwprintw(game->main_win, game->win_max_y - 2 , 3, \
+	mvwprintw(game->main_win, game->win_max_y - 2, 3, \
 		"%s", "|         ypikul  |");
 	attron(COLOR_PAIR(1));
 	mvwhline(game->main_win, 0, 0, '#', game->win_max_x);
@@ -44,7 +44,6 @@ static void	update_lose(t_data *game)
 	mvwhline(game->main_win, MAX_Y + 1, 0, '#', game->win_max_x);
 	mvwvline(game->main_win, 0, 0, '#', game->win_max_y);
 	mvwvline(game->main_win, 0, MAX_X, '#', game->win_max_y);
-	attroff(COLOR_PAIR(1));
 }
 
 void		lose_screen(t_data *game)

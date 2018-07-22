@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 18:36:59 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:12:34 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:39:23 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define X_START game->win_max_x / 2 - 25
 #define Y_START game->win_max_y / 10
 
-static void	update_finish(t_data *game)
+void		update_finish(t_data *game)
 {
 	werase(game->main_win);
 	attron(COLOR_PAIR(2));
@@ -33,12 +33,10 @@ static void	update_finish(t_data *game)
 	mvwprintw(game->main_win, game->win_max_y / 2, game->win_max_x / 2 - 5, \
 		"%s", "YOU WON!!!");
 	mvwprintw(game->main_win, game->win_max_y / 2 + 2, game->win_max_x / 2 \
-		- 5, "%s", "1 : Continue");
-	mvwprintw(game->main_win, game->win_max_y / 2 + 4, game->win_max_x / 2 \
 		- 5, "%s", "ESC : Exit");
-	mvwprintw(game->main_win, game->win_max_y - 3 , 3, \
+	mvwprintw(game->main_win, game->win_max_y - 3, 3, \
 		"%s", "|authors: dadavyde|");
-	mvwprintw(game->main_win, game->win_max_y - 2 , 3, \
+	mvwprintw(game->main_win, game->win_max_y - 2, 3, \
 		"%s", "|         ypikul  |");
 	attron(COLOR_PAIR(1));
 	mvwhline(game->main_win, 0, 0, '#', game->win_max_x);
@@ -46,7 +44,6 @@ static void	update_finish(t_data *game)
 	mvwhline(game->main_win, MAX_Y + 1, 0, '#', game->win_max_x);
 	mvwvline(game->main_win, 0, 0, '#', game->win_max_y);
 	mvwvline(game->main_win, 0, MAX_X, '#', game->win_max_y);
-	attroff(COLOR_PAIR(1));
 }
 
 void		finish_screen(t_data *game)
@@ -61,12 +58,6 @@ void		finish_screen(t_data *game)
 	{
 		update_resolution(game);
 		update_finish(game);
-	}
-	if (game->ch == '1')
-	{
-		game->game_mode = 1;
-		update_frame(game);
-		update_blocks(game);
 	}
 	else if (game->ch == ESC)
 	{

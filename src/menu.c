@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:49:19 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 21:55:56 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:41:05 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	update_menu(t_data *game)
 		"%s", "1 : Play!");
 	mvwprintw(game->main_win, game->win_max_y / 2 + 2, game->win_max_x / 2 \
 		- 5, "%s", "ESC : Exit");
-	mvwprintw(game->main_win, game->win_max_y - 3 , 3, \
+	mvwprintw(game->main_win, game->win_max_y - 3, 3, \
 		"%s", "|authors: dadavyde|");
-	mvwprintw(game->main_win, game->win_max_y - 2 , 3, \
+	mvwprintw(game->main_win, game->win_max_y - 2, 3, \
 		"%s", "|         ypikul  |");
 	attron(COLOR_PAIR(1));
 	mvwhline(game->main_win, 0, 0, '#', game->win_max_x);
