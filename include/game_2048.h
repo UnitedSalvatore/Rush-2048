@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 18:39:56 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 21:26:32 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define MIN_BLOCK_X 6u
 # define MIN_BLOCK_Y 3u
 # define MAX_MAP_SIZE 5u
+# define MENU_MODE 0
+# define GAME_MODE 1
+# define LOSE_MODE 4
 
 static const char	g_logo[7][52] = {
 	"        ::::::::   :::::::      :::      :::::::: ",
@@ -33,6 +36,13 @@ static const char	g_logo[7][52] = {
 
 typedef struct s_data	t_data;
 typedef enum e_const	t_winv;
+typedef struct s_position	t_position;
+
+struct		s_position
+{
+	unsigned	x;
+	unsigned	y;
+};
 
 typedef enum	e_const
 {
@@ -57,6 +67,13 @@ struct			s_data
 	unsigned	win_y;
 	unsigned	win_max_x;
 	unsigned	win_max_y;
+
+	\
+
+	unsigned	num_of_free_cell;
+	unsigned	player_moved;
+	unsigned	game_over;
+	unsigned	*line;
 };
 
 /*
@@ -106,5 +123,29 @@ enum			e_set {SET_TO_LINE, SET_TO_ARRAY};
 */
 void			check_win_value(t_winv win_value);
 void			error_exit(int error_name, t_data *game);
+
+/*
+**	generate_digits.c
+*/
+void			generate_first_program_move(t_data *game);
+void			generate_digit(t_data *game, unsigned num_of_free_cell);
+
+/*
+**	player_move.c
+*/
+void			player_make_move(t_data *game);
+
+/*
+**	handle_line.c
+*/
+void			handle_line(t_data *game);
+void			move_numbers_left(t_data *game);
+unsigned		is_same(unsigned *line, unsigned idx_1, unsigned idx_2);
+unsigned		count_free_cells(unsigned *line, unsigned line_size);
+
+/*
+**	program_move.c
+*/
+int				program_make_move(t_data *game);
 
 #endif

@@ -6,12 +6,39 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 16:13:56 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 18:31:19 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 21:43:23 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game_2048.h"
 #include <ncurses.h>
+
+static unsigned	get_color(const unsigned col)
+{
+	if (col == 2)
+		return (3);
+	if (col == 4)
+		return (4);
+	if (col == 8)
+		return (5);
+	if (col == 16)
+		return (6);
+	if (col == 32)
+		return (7);
+	if (col == 64)
+		return (8);
+	if (col == 128)
+		return (9);
+	if (col == 256)
+		return (10);
+	if (col == 512)
+		return (11);
+	if (col == 1024)
+		return (12);
+	if (col == 2048)
+		return (13);
+	return (14);
+}
 
 void	update_resolution(t_data *game)
 {
@@ -43,16 +70,20 @@ void	update_blocks(t_data *game)
 		x = 0;
 		while (x < game->map_size)
 		{
-			// if ((game->blocks[i][j]).active)
+			if (game->blocks[y][x])
+			{
+				attron(COLOR_PAIR(get_color(game->blocks[y][x])));
 				mvwprintw(game->main_win, \
 					(y + 1) + (y * game->block_y) + (game->block_y / 2), \
 					x + (x * game->block_x) + (game->block_x / 2 \
-					- (numlen(game->blocks[y][x]) / 2)), \
+						- (numlen(game->blocks[y][x]) / 2)), \
 					"%d", game->blocks[y][x]);
-				++x;
+			}
+			++x;
 		}
 		++y;
 	}
+	mvwprintw(game->main_win, game->win_max_y + 1, 0, "Score: %u", game->game_mode);
 }
 
 void	update_frame(t_data *game)
@@ -68,6 +99,5 @@ void	update_frame(t_data *game)
 		mvwvline(game->main_win, 0, i * game->block_x + i, '#', game->win_max_y);
 		++i;
 	}
-
 	attroff(COLOR_PAIR(1));
 }

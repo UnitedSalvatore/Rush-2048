@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 15:49:19 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 18:37:30 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 21:06:08 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		menu_screen(t_data *game)
 	{
 		game->game_mode = 1;
 		update_frame(game);
+		update_blocks(game);
 	}
 	wrefresh(game->main_win);
 }

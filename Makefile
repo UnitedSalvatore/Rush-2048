@@ -9,13 +9,17 @@ FILENAMES = main.c \
 			initialize.c \
 			update.c \
 			update_screen.c \
-			utils.c
+			utils.c \
+			generate_digits.c \
+			player_move.c \
+			program_move.c \
+			handle_line.c
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-FLAGS ?= -Wall -Wextra -Werror
+FLAGS ?= -Wall -Wextra -Werror -g
 FLAGS += -I./inc/
 
 all: $(NAME)
