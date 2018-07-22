@@ -6,12 +6,12 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 11:04:01 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 13:21:09 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 17:36:00 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/include/libft.h"
-#include "../include/2048.h"
+#include "../include/game_2048.h"
 #include <ncurses.h>
 #include <string.h>
 #include <stdlib.h>
@@ -28,7 +28,9 @@ static void	ncurses(t_data *game)
 		ft_error("Error while inialize ncurses mode", 1);
 	curs_set(0);
 	srand(time(NULL));
+	nodelay(game->main_win, TRUE);
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 }
 
 static void	game_data(t_data *game)
@@ -40,13 +42,14 @@ static void	game_data(t_data *game)
 	game->block_x = MIN_BLOCK_X;
 	game->block_y = MIN_BLOCK_Y;
 	game->win_value = WIN_VALUE;
+	game->ch = '\0';
 	if (!game->map_size)
 		ft_error("Wrong map size", 0);
 	i = 0;
 	j = 0;
-	game->blocks = ft_memalloc(sizeof(t_block *) * game->map_size);
+	game->blocks = ft_memalloc(sizeof(unsigned *) * game->map_size);
 	while (i < game->map_size)
-		game->blocks[i++] = ft_memalloc(sizeof(t_block) * game->map_size);
+		game->blocks[i++] = ft_memalloc(sizeof(unsigned) * game->map_size);
 }
 
 void		initialize(t_data *game)

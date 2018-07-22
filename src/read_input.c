@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/21 14:14:50 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 16:46:01 by ypikul           ###   ########.fr       */
+/*   Created: 2018/07/22 15:28:01 by ypikul            #+#    #+#             */
+/*   Updated: 2018/07/22 16:46:32 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
 #include "../include/game_2048.h"
+#include <ncurses.h>
 
-int		main(void)
+void	read_input(t_data *game)
 {
-	t_data	game;
+	unsigned ch;
 
-	ft_bzero(&game, sizeof(game));
-	initialize(&game);
-	check_win_value(game.win_value);
-	while (42)
-	{
-		read_input(&game);
-		if (game.game_mode == 0)
-			menu(&game);
-		else if (game.game_mode == 1)
-			update(&game);
-		if (game.ch == ESC)
-			break;
-	}
-	endwin();
-	return (0);
+	ch = getch();
+	if (ch == KEY_DOWN || ch == KEY_UP ||
+			ch == KEY_LEFT || ch == KEY_RIGHT || ch == ESC)
+		game->ch = ch;
 }

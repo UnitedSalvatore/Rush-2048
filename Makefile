@@ -4,8 +4,11 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 FILENAMES = main.c \
+			read_input.c \
+			menu.c \
 			initialize.c \
 			update.c \
+			update_screen.c \
 			utils.c
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
