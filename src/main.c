@@ -6,12 +6,12 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:50 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/21 16:02:57 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 11:41:40 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "2048.h"
+#include "../libft/include/libft.h"
+#include "../include/2048.h"
 
 int		main(void)
 {

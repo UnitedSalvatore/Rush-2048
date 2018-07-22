@@ -6,31 +6,42 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/21 18:04:55 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 13:39:03 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef 2048_H
-# define 2048_H
+#ifndef GAME_2048_H
+# define GAME_2048_H
 
 # include <string.h>
 # include <ncurses.h>
 
 # define DEFAULT_MAP_SIZE 4u
-# define MIN_BLOCK_SIZE 6u
+# define MIN_BLOCK_X 6u
+# define MIN_BLOCK_Y 3u
 # define MAX_MAP_SIZE 5u
 
-typedef s_data	t_data;
-typedef	s_block	t_block;
+typedef struct s_data	t_data;
+typedef	struct s_block	t_block;
+typedef enum e_const	t_winv;
+
+typedef enum	e_const
+{
+	WIN_VALUE = 2048u
+}				t_winv;
 
 struct			s_data
 {
 	size_t		score;
 	unsigned	map_size;
-	unsigned	block_size;
-	t_block		*blocks[MAX_MAP_SIZE * MAX_MAP_SIZE];
+	t_winv		win_value;
+	char		ch;
 
-	WINDOWS		*main_win;
+	t_block		**blocks;
+	unsigned	block_x;
+	unsigned	block_y;
+
+	WINDOW		*main_win;
 	unsigned	win_x;
 	unsigned	win_y;
 	unsigned	win_max_x;
@@ -39,17 +50,28 @@ struct			s_data
 
 struct			s_block
 {
-	size_t		value;
+	unsigned	active;
+	unsigned	value;
 };
 
-enum			e_const
-{
-	WIN_VALUE = 2048
-};
+// enum			e_direction
+// {
+// 	UP, DOWN, LEFT, RIGHT
+// };
 
-enum			e_direction
-{
-	UP, DOWN, LEFT, RIGHT
-};
+/*
+**	utils.c
+*/
+void	ft_error(const char *message, int exit_code);
+
+/*
+**	update.c
+*/
+void	update(t_data *game);
+
+/*
+**	initialize.c
+*/
+void	initialize(t_data *game);
 
 #endif
