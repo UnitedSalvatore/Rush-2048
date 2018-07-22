@@ -34,7 +34,7 @@ typedef struct		s_game_data
 	int				player_moved;
 	int				num_of_free_cell;
 	int				checking_mode;
-	int				score;
+	int				score;//added
 }					t_game_data;
 
 typedef struct		s_position
@@ -54,14 +54,14 @@ void	set_digit(t_game_data *game, int digit_idx, int digit);
 
 int		player_make_move(t_game_data *game);
 void	player_press_key(t_game_data *game);
-int		handle_player_move(t_game_data *game);
-void	fill_line(t_game_data *game, int line_count, int set_type);
+int		handle_player_move(t_game_data *game, int keycode);
+void	fill_line(t_game_data *game, int line_count, int set_type, int keycode);
 void	set_number(t_game_data *game, int *line_num, int *array_num, int set_type);
 
 void	handle_line(t_game_data *game);
 void	move_numbers_left(t_game_data *game);
 int		is_same(int *line, int idx_1, int idx_2);
-int		count_num_of_free_cell(int *line, int line_size);
+int		count_free_cells(int *line, int line_size);
 
 int		program_make_move(t_game_data *game);
 int		try_add_digit_to_game(t_game_data *game);
