@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:50 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 21:42:22 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:11:54 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ int		main(void)
 	while (42)
 	{
 		read_input(&game);
-		if (game.game_mode == 0)
+		if (game.game_mode == MENU_MODE)
 			menu_screen(&game);
-		else if (game.game_mode == 1)
+		else if (game.game_mode == GAME_MODE)
 			update(&game);
-		if (game.ch == ESC)
-			break;
+		else if (game.game_mode == LOSE_MODE)
+			lose_screen(&game);
+		else if (game.game_mode == WIN_MODE)
+			finish_screen(&game);
+		else if (game.game_mode == LOSE_MODE)
+			lose_screen(&game);
 		game.ch = 0;
 	}
 	endwin();

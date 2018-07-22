@@ -6,6 +6,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 FILENAMES = main.c \
 			read_input.c \
 			menu.c \
+			finish.c \
+			lose.c \
 			initialize.c \
 			update.c \
 			update_screen.c \
@@ -19,7 +21,7 @@ SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-FLAGS ?= -Wall -Wextra -Werror -g
+FLAGS ?= -Wall -Wextra -Werror
 FLAGS += -I./inc/
 
 all: $(NAME)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   finish.c                                           :+:      :+:    :+:   */
+/*   lose.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/22 18:36:59 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:12:34 by ypikul           ###   ########.fr       */
+/*   Created: 2018/07/22 22:07:20 by ypikul            #+#    #+#             */
+/*   Updated: 2018/07/22 22:16:48 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define X_START game->win_max_x / 2 - 25
 #define Y_START game->win_max_y / 10
 
-static void	update_finish(t_data *game)
+static void	update_lose(t_data *game)
 {
 	werase(game->main_win);
 	attron(COLOR_PAIR(2));
@@ -30,11 +30,9 @@ static void	update_finish(t_data *game)
 	mvwprintw(game->main_win, Y_START + 5, X_START, "%s", g_logo[4]);
 	mvwprintw(game->main_win, Y_START + 6, X_START, "%s", g_logo[5]);
 	mvwprintw(game->main_win, Y_START + 7, X_START, "%s", g_logo[6]);
-	mvwprintw(game->main_win, game->win_max_y / 2, game->win_max_x / 2 - 5, \
-		"%s", "YOU WON!!!");
+	mvwprintw(game->main_win, game->win_max_y / 2, game->win_max_x / 2 - 6, \
+		"%s", "YOU LOSE :(");
 	mvwprintw(game->main_win, game->win_max_y / 2 + 2, game->win_max_x / 2 \
-		- 5, "%s", "1 : Continue");
-	mvwprintw(game->main_win, game->win_max_y / 2 + 4, game->win_max_x / 2 \
 		- 5, "%s", "ESC : Exit");
 	mvwprintw(game->main_win, game->win_max_y - 3 , 3, \
 		"%s", "|authors: dadavyde|");
@@ -49,7 +47,7 @@ static void	update_finish(t_data *game)
 	attroff(COLOR_PAIR(1));
 }
 
-void		finish_screen(t_data *game)
+void		lose_screen(t_data *game)
 {
 	unsigned	win_y;
 	unsigned	win_x;
@@ -60,15 +58,9 @@ void		finish_screen(t_data *game)
 	if (win_y != game->win_y || win_x != game->win_x)
 	{
 		update_resolution(game);
-		update_finish(game);
+		update_lose(game);
 	}
-	if (game->ch == '1')
-	{
-		game->game_mode = 1;
-		update_frame(game);
-		update_blocks(game);
-	}
-	else if (game->ch == ESC)
+	if (game->ch == ESC)
 	{
 		endwin();
 		exit(0);

@@ -6,14 +6,14 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 17:47:00 by dadavyde          #+#    #+#             */
-/*   Updated: 2018/07/22 21:45:23 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:22:44 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/game_2048.h"
 #include <stdlib.h>
 
-void	generate_first_program_move(t_data *game)
+void		generate_first_program_move(t_data *game)
 {
 	generate_digit(game, game->num_of_free_cell);
 	generate_digit(game, game->num_of_free_cell - 1);
@@ -44,11 +44,10 @@ static void	set_digit(t_data *game, unsigned digit_idx, unsigned digit)
 	}
 }
 
-void	generate_digit(t_data *game, unsigned num_of_free_cell)
+void		generate_digit(t_data *game, unsigned num_of_free_cell)
 {
 	unsigned	digit_idx;
 	unsigned	digit;
-
 
 	if (num_of_free_cell > 1)
 		digit_idx = (rand() % num_of_free_cell);

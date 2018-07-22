@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:42:00 by dadavyde          #+#    #+#             */
-/*   Updated: 2018/07/22 21:45:01 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:21:04 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static int	check_possible_moves(t_data *game)
 		{
 			if (idx.y > 0)
 			{
-				if (game->blocks[idx.y][idx.x] == game->blocks[idx.y - 1][idx.x])
+				if (game->blocks[idx.y][idx.x] ==
+					game->blocks[idx.y - 1][idx.x])
 					return (TRUE);
 			}
 			if (idx.x < game->map_size - 1)
 			{
-				if (game->blocks[idx.y][idx.x] == game->blocks[idx.y][idx.x + 1])
+				if (game->blocks[idx.y][idx.x] ==
+					game->blocks[idx.y][idx.x + 1])
 					return (TRUE);
 			}
 			idx.x++;
@@ -59,7 +61,6 @@ static int	try_add_digit_to_game(t_data *game)
 	}
 }
 
-
 static void	check_for_win_value(t_data *game)
 {
 	t_position	idx;
@@ -75,7 +76,7 @@ static void	check_for_win_value(t_data *game)
 				if (game->blocks[idx.y][idx.x] == WIN_VALUE)
 				{
 					game->win_value = NONE;
-					return;
+					return ;
 				}
 			}
 			idx.x++;
@@ -88,6 +89,8 @@ int			program_make_move(t_data *game)
 {
 	if (game->win_value != NONE)
 		check_for_win_value(game);
+	if (game->win_value == NONE)
+		return (TRUE);
 	if (try_add_digit_to_game(game) == TRUE)
 		return (TRUE);
 	else

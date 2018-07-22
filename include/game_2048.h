@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 21:53:36 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:21:41 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # define MAX_MAP_SIZE 5u
 # define MENU_MODE 0
 # define GAME_MODE 1
-# define LOSE_MODE 4
+# define LOSE_MODE 2
+# define WIN_MODE 4
 
 static const char	g_logo[7][52] = {
 	"        ::::::::   :::::::      :::      :::::::: ",
@@ -47,7 +48,7 @@ struct		s_position
 typedef enum	e_const
 {
 	NONE = 0u,
-	WIN_VALUE = 2048u
+	WIN_VALUE = 16u
 }				t_const;
 
 struct			s_data
@@ -87,6 +88,16 @@ void			read_input(t_data *game);
 void			menu_screen(t_data *game);
 
 /*
+**	finish.c
+*/
+void			finish_screen(t_data *game);
+
+/*
+**	lose.c
+*/
+void			lose_screen(t_data *game);
+
+/*
 **	initialize.c
 */
 void			initialize(t_data *game);
@@ -97,7 +108,7 @@ void			initialize(t_data *game);
 void			update(t_data *game);
 
 /*
-**	utils.c
+**	update_screen.c
 */
 void			update_resolution(t_data *game);
 void			update_blocks(t_data *game);

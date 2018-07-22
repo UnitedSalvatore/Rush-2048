@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 16:13:56 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 21:43:23 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/22 22:06:53 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	update_blocks(t_data *game)
 		}
 		++y;
 	}
-	mvwprintw(game->main_win, game->win_max_y + 1, 0, "Score: %u", game->game_mode);
+	mvwprintw(game->main_win, game->win_max_y, 0, "Score: %u", game->score);
 }
 
 void	update_frame(t_data *game)
