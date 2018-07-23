@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 16:03:47 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 22:58:51 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/23 16:44:23 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void		update(t_data *game)
 		update_blocks(game);
 	}
 	else if (game->ch == ESC)
-		return ;
+		exit(1);
 	wrefresh(game->main_win);
 }

@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.42.unit.ua>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/21 14:14:36 by ypikul            #+#    #+#             */
-/*   Updated: 2018/07/22 23:01:22 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/07/23 16:51:04 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string.h>
 # include <ncurses.h>
 
-# define DEFAULT_MAP_SIZE 4u
+# define DEFAULT_MAP_SIZE 5u
 # define MIN_BLOCK_X 6u
 # define MIN_BLOCK_Y 3u
 # define MAX_MAP_SIZE 5u
